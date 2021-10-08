@@ -11,7 +11,7 @@ class Terra(QMainWindow):
         super(Terra, self).__init__()
 
         self.setWindowTitle("Terra")
-        self.setWindowIcon(QIcon('Terra.png'))
+        self.setWindowIcon(QIcon('Photos/Terra.png'))
         self.setMinimumSize(650,450)
 
         FridgeInfoLayout = QVBoxLayout()
