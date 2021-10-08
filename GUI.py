@@ -38,7 +38,7 @@ class Terra(QMainWindow):
 
         #Fridge Info Layout
         FridgeIcon = QLabel()
-        FridgeIcon.setPixmap(QPixmap('Fridge.png'))
+        FridgeIcon.setPixmap(QPixmap('Photos/Fridge.png'))
         FridgeIcon.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         TempLabel = QLabel('Temperature')
         TempLabel.setAlignment(Qt.AlignmentFlag.AlignHCenter)
@@ -52,9 +52,9 @@ class Terra(QMainWindow):
         LightLabel.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         self.Light = QLabel()
         if (thermostat.light == 1):
-            self.Light.setPixmap(QPixmap('LightOn.png'))
+            self.Light.setPixmap(QPixmap('Photos/LightOn.png'))
         elif (thermostat.light == 0):
-            self.Light.setPixmap(QPixmap('LightOff.png'))
+            self.Light.setPixmap(QPixmap('Photos/LightOff.png'))
         self.Light.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         FridgeInfoLayout.addWidget(FridgeIcon)
         FridgeInfoLayout.addWidget(TempLabel)
@@ -91,7 +91,7 @@ class Terra(QMainWindow):
 
         #Database Info Layout
         VaccineIcon = QLabel()
-        VaccineIcon.setPixmap(QPixmap('Vaccine.png'))
+        VaccineIcon.setPixmap(QPixmap('Photos/Vaccine.png'))
         VaccineIcon.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         LotLabel = QLabel('Lot #')
         LotLabel.setAlignment(Qt.AlignmentFlag.AlignHCenter)
@@ -148,9 +148,9 @@ def update_GUI(self, thermostat):
     self.Temperature = QLabel(f'{thermostat.temperature}')
     self.Humidity = QLabel(f'{thermostat.humidity}')
     if (thermostat.light == 1):
-        self.Light.setPixmap(QPixmap('LightOn.png'))
+        self.Light.setPixmap(QPixmap('Photos/LightOn.png'))
     elif (thermostat.light == 0):
-        self.Light.setPixmap(QPixmap('LightOff.png'))
+        self.Light.setPixmap(QPixmap('Photos/LightOff.png'))
     self.Lot = QLabel(f'{thermostat.lot}')
     self.Expiration = QLabel(f'{thermostat.expiration}')
     self.Remaining = QLabel(f'{thermostat.remaining}')
