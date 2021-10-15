@@ -3,16 +3,29 @@ from typing import Set
 from PyQt6.QtWidgets import *
 from PyQt6.QtGui import *
 from PyQt6.QtCore import QSize, Qt
-import sys
+import sys, os
 
 class Terra(QMainWindow):
 
     def __init__(self, thermostat):
         super(Terra, self).__init__()
 
+
+
         self.setWindowTitle("Terra")
-        self.setWindowIcon(QIcon('Photos/Terra.png'))
+        self.setWindowIcon(QIcon(os.path.join(sys.path[0], 'Photos/Terra.png')))
         self.setMinimumSize(650,450)
+        menuBar = self.menuBar()
+        self.setMenuBar(menuBar)
+        fileMenu = QMenu('&Change Tab', self)
+        fileMenu.addAction('Front Page')
+        fileMenu.addAction('1')
+        fileMenu.addAction('2')
+        fileMenu.addAction('3')
+        fileMenu.addAction('4')
+        fileMenu.addAction('5')
+        menuBar.addMenu(fileMenu) 
+
 
         FridgeInfoLayout = QVBoxLayout()
         SetFunctionLayout = QVBoxLayout()
@@ -38,7 +51,7 @@ class Terra(QMainWindow):
 
         #Fridge Info Layout
         FridgeIcon = QLabel()
-        FridgeIcon.setPixmap(QPixmap('Photos/Fridge.png'))
+        FridgeIcon.setPixmap(QPixmap(os.path.join(sys.path[0], 'Photos/Fridge.png')))
         FridgeIcon.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         TempLabel = QLabel('Temperature')
         TempLabel.setAlignment(Qt.AlignmentFlag.AlignHCenter)
@@ -52,9 +65,9 @@ class Terra(QMainWindow):
         LightLabel.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         self.Light = QLabel()
         if (thermostat.light == 1):
-            self.Light.setPixmap(QPixmap('Photos/LightOn.png'))
+            self.Light.setPixmap(QPixmap(os.path.join(sys.path[0], 'Photos/LightOn.png')))
         elif (thermostat.light == 0):
-            self.Light.setPixmap(QPixmap('Photos/LightOff.png'))
+            self.Light.setPixmap(QPixmap(os.path.join(sys.path[0], 'Photos/LightOff.png')))
         self.Light.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         FridgeInfoLayout.addWidget(FridgeIcon)
         FridgeInfoLayout.addWidget(TempLabel)
@@ -91,7 +104,7 @@ class Terra(QMainWindow):
 
         #Database Info Layout
         VaccineIcon = QLabel()
-        VaccineIcon.setPixmap(QPixmap('Photos/Vaccine.png'))
+        VaccineIcon.setPixmap(QPixmap(os.path.join(sys.path[0], 'Photos/Vaccine.png')))
         VaccineIcon.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         LotLabel = QLabel('Lot #')
         LotLabel.setAlignment(Qt.AlignmentFlag.AlignHCenter)
@@ -148,11 +161,11 @@ def update_GUI(self, thermostat):
     self.Temperature = QLabel(f'{thermostat.temperature}')
     self.Humidity = QLabel(f'{thermostat.humidity}')
     if (thermostat.light == 1):
-        self.Light.setPixmap(QPixmap('Photos/LightOn.png'))
+        self.Light.setPixmap(QPixmap(os.path.join(sys.path[0], 'Photos/LightOn.png')))
     elif (thermostat.light == 0):
-        self.Light.setPixmap(QPixmap('Photos/LightOff.png'))
+        self.Light.setPixmap(QPixmap(os.path.join(sys.path[0], 'Photos/LightOff.png')))
     self.Lot = QLabel(f'{thermostat.lot}')
     self.Expiration = QLabel(f'{thermostat.expiration}')
     self.Remaining = QLabel(f'{thermostat.remaining}')
 
-        
+      
