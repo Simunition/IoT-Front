@@ -1,18 +1,56 @@
-import Thermostat, GUI
+import Vaccine_Tracker, GUI
 from PyQt6.QtWidgets import QApplication
 from PyQt6.QtGui import QPalette, QColor
 import sys
 
 
 #Mandatory: IDNum, thermostatName, address, lot, expiration, remaining
-thermostat = Thermostat.Thermostat(
+vt1 = Vaccine_Tracker.Vaccine_Tracker(
     IDNum = '1',
-    thermostatName = 'Thermostat-Pfizer-Maryland',
+    Name = 'Thermostat-Pfizer-Maryland',
     address = 'Maryland',
     lot = '72435',
-    expiration = '7/21/25',
+    expiration = '1/21/25',
     remaining = '773'
 )
+
+vt2 = Vaccine_Tracker.Vaccine_Tracker(
+    IDNum = '2',
+    Name = 'Thermostat-Pfizer-Israel',
+    address = 'Maryland',
+    lot = '132432',
+    expiration = '2/21/25',
+    remaining = '773'
+)
+
+vt3 = Vaccine_Tracker.Vaccine_Tracker(
+    IDNum = '3',
+    Name = 'Thermostat-Moderna-Maryland',
+    address = 'Maryland',
+    lot = '345753',
+    expiration = '3/21/25',
+    remaining = '773'
+)
+
+vt4 = Vaccine_Tracker.Vaccine_Tracker(
+    IDNum = '4',
+    Name = 'Thermostat-Moderna-Israel',
+    address = 'Maryland',
+    lot = '685865',
+    expiration = '4/21/25',
+    remaining = '773'
+)
+
+vt5 = Vaccine_Tracker.Vaccine_Tracker(
+    IDNum = '5',
+    Name = 'Thermostat-JJ-Maryland',
+    address = 'Maryland',
+    lot = '12870',
+    expiration = '5/21/25',
+    remaining = '773'
+)
+
+vts = [vt1, vt2, vt3, vt4, vt5]
 
 #build connections
 
@@ -48,7 +86,7 @@ app.setStyleSheet('''
     }
 ''')
 
-window = GUI.Terra(thermostat)
+window = GUI.Terra(vts)
 window.show()
 
 app.exec()

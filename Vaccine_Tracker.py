@@ -1,15 +1,16 @@
 
-class Thermostat:
+class Vaccine_Tracker:
 
     #Attributes for setting and maintaining data about the thermostat and values associated with a typical physical device
     #last humidity and last temp are used to know which direction to move in when psuedo naturally changing those values.
 
-    def __init__(self, IDNum, thermostatName, address, lot, 
+    def __init__(self, IDNum, Name, address, lot, 
                     expiration, remaining, temperature = 70,
                     setTemperature = 70, humidity = 65,
                     light = 0, lastUpdate = "Never"):
         self.IDNum = IDNum
-        self.thermostatName = clean_name(thermostatName)
+        self.Name = Name
+        self.CleanName = clean_name(Name)
         self.address = address
         self.temperature = temperature
         self.setTemperature = setTemperature
@@ -22,7 +23,7 @@ class Thermostat:
 
         self.data = {
             "IDNum":self.IDNum,
-            "thermostatName":self.thermostatName,
+            "Name":self.Name,
             "address":self.address,
             "temperature":self.temperature,
             "setTemperature":self.setTemperature,
@@ -37,7 +38,7 @@ class Thermostat:
     def __str__(self):
         return str(self.data)
 
-def clean_name(thermostatName):
-    data = thermostatName.split('-')
+def clean_name(Name):
+    data = Name.split('-')
     return data[1]
 
