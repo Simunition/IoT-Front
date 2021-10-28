@@ -20,7 +20,8 @@ vt2 = Vaccine_Tracker.Vaccine_Tracker(
     address = 'Maryland',
     lot = '132432',
     expiration = '2/21/25',
-    remaining = '773'
+    remaining = '773',
+    light = 1
 )
 
 vt3 = Vaccine_Tracker.Vaccine_Tracker(

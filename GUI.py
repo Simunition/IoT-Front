@@ -16,15 +16,8 @@ class Terra(QMainWindow):
 
         self.vts = vts
 
-        self.vt = Vaccine_Tracker.Vaccine_Tracker(
-            IDNum = '--',
-            Name = '--',
-            address = '--',
-            lot = '--',
-            expiration = '--',
-            remaining = '--'
-        )
-
+        #Set Default 
+        self.vt = vts[0]
 
         FridgeInfoLayout = QVBoxLayout()
         SetFunctionLayout = QVBoxLayout()
@@ -33,7 +26,6 @@ class Terra(QMainWindow):
         TopLabelLayout = QHBoxLayout()
         MainLayout = QVBoxLayout()
         BottomLabelLayout = QHBoxLayout()
-
 
 
         #Top Label Layout
@@ -85,18 +77,20 @@ class Terra(QMainWindow):
         TempDial.setSingleStep(0.5)
         TempDial.valueChanged.connect(self.value_changed)
         SetButton = QPushButton('Set')
+        currentSetLabel = QLabel(f'Current Set: {self.vt.setTemperature}')
         LightButtonLabel = QLabel('Fridge Light')
         LightButtonLabel.setAlignment(Qt.AlignmentFlag.AlignHCenter | Qt.AlignmentFlag.AlignBottom)
         ButtonLayout = QHBoxLayout()
         OnButton = QPushButton('On')
-        OnButton.clicked.connect(lambda:self.light_switch(vt, 1))
+        OnButton.clicked.connect(lambda:self.light_switch(1))
         OffButton = QPushButton('Off')
-        OffButton.clicked.connect(lambda:self.light_switch(vt, 0))
+        OffButton.clicked.connect(lambda:self.light_switch(0))
         ButtonLayout.addWidget(OnButton)
         ButtonLayout.addWidget(OffButton)
         SetFunctionLayout.addWidget(TempDial)
         SetFunctionLayout.addWidget(self.DialLabel)
         SetFunctionLayout.addWidget(SetButton, alignment=Qt.AlignmentFlag.AlignTop)
+        SetFunctionLayout.addWidget(currentSetLabel, alignment=Qt.AlignmentFlag.AlignTop)
         SetFunctionLayout.addWidget(LightButtonLabel)
         SetFunctionLayout.addLayout(ButtonLayout)
 
@@ -152,16 +146,14 @@ class Terra(QMainWindow):
 
         for vt in vts:
             VTMenu.append(QAction(f'&VT{vt.IDNum}', self))
-            VTMenu[index].triggered.connect(lambda:self.switch_page(index))
             fileMenu.addAction(VTMenu[index])
             index += 1
 
-        # index = 0
-
-        # for item in VTMenu:
-        #     test = vtObject[index]
-        #     item.triggered.connect(self.switch_page(test))
-        #     index += 1
+        VTMenu[0].triggered.connect(lambda:self.switch_page(self.vts[0]))
+        VTMenu[1].triggered.connect(lambda:self.switch_page(self.vts[1]))
+        VTMenu[2].triggered.connect(lambda:self.switch_page(self.vts[2]))
+        VTMenu[3].triggered.connect(lambda:self.switch_page(self.vts[3]))
+        VTMenu[4].triggered.connect(lambda:self.switch_page(self.vts[4]))
 
         exitAct = QAction('&Exit', self)
         exitAct.triggered.connect(QApplication.instance().quit)
@@ -176,27 +168,28 @@ class Terra(QMainWindow):
     def value_changed(self, i):
         self.DialLabel.setText(str(i))
 
-    def light_switch(self, vt, i):
-        vt.light = i
-        update_GUI(self, vt)
+    def light_switch(self, i):
+        self.vt.light = i
+        update_GUI(self, self.vt)
 
-    def switch_page(self, index):
-        self.vt = self.vts[index]
+    def switch_page(self, vt):
+        self.vt = vt
         update_GUI(self, self.vt)
 
 
 def update_GUI(self, vt):
-    self.IDLabel = QLabel(f'ID: {vt.IDNum}')
-    self.VaccineLabel = QLabel(f'{vt.CleanName}')
-    self.AddressLabel = QLabel(f'{vt.address}')
-    self.Temperature = QLabel(f'{vt.temperature}')
-    self.Humidity = QLabel(f'{vt.humidity}')
+    self.vt = vt
+    self.IDLabel.setText(f'ID: {vt.IDNum}')
+    self.VaccineLabel.setText(f'{vt.CleanName}')
+    self.AddressLabel.setText(f'{vt.address}')
+    self.Temperature.setText(f'{vt.temperature}')
+    self.Humidity.setText(f'{vt.humidity}')
     if (vt.light == 1):
         self.Light.setPixmap(QPixmap(os.path.join(sys.path[0], 'Photos/LightOn.png')))
     elif (vt.light == 0):
         self.Light.setPixmap(QPixmap(os.path.join(sys.path[0], 'Photos/LightOff.png')))
-    self.Lot = QLabel(f'{vt.lot}')
-    self.Expiration = QLabel(f'{vt.expiration}')
-    self.Remaining = QLabel(f'{vt.remaining}')
+    self.Lot.setText(f'{vt.lot}')
+    self.Expiration.setText(f'{vt.expiration}')
+    self.Remaining.setText(f'{vt.remaining}')
 
       
