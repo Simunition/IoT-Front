@@ -21,7 +21,9 @@ class Vaccine_Tracker:
         self.remaining = remaining
         self.lastUpdate = lastUpdate
 
-        self.data = {
+
+    def __str__(self):
+        data = {
             "IDNum":self.IDNum,
             "Name":self.Name,
             "address":self.address,
@@ -34,9 +36,8 @@ class Vaccine_Tracker:
             "remaining":self.remaining,
             "lastUpdate":self.lastUpdate
         }
+        return str(data)
 
-    def __str__(self):
-        return str(self.data)
 
 def clean_name(Name):
     data = Name.split('-')

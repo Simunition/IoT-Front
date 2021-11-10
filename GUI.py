@@ -4,17 +4,32 @@ from PyQt6.QtWidgets import *
 from PyQt6.QtGui import *
 from PyQt6.QtCore import QSize, Qt
 import sys, os
+import json
 
 class Terra(QMainWindow):
 
-    def __init__(self, vts):
+    def __init__(self, mqtt_connection):
         super(Terra, self).__init__()
 
         self.setWindowTitle("Terra")
         self.setWindowIcon(QIcon(os.path.join(sys.path[0], 'Photos/Terra.png')))
         self.setMinimumSize(650,450)
 
-        self.vts = vts
+        file = open("vts.json", "r")
+        file = json.load(file)
+
+        vts = []
+
+        for f in file:
+            item = Vaccine_Tracker.Vaccine_Tracker(
+                IDNum = file[f]["IDNum"],
+                Name = file[f]["Name"],
+                address = file[f]["address"],
+                lot = file[f]["lot"],
+                expiration = file[f]["expiration"],
+                remaining = file[f]["remaining"]
+            )
+            vts.append(item)
 
         #Set Default 
         self.vt = vts[0]
@@ -77,6 +92,7 @@ class Terra(QMainWindow):
         TempDial.setSingleStep(0.5)
         TempDial.valueChanged.connect(self.value_changed)
         SetButton = QPushButton('Set')
+        SetButton.clicked.connect(lambda:self.set_temp(self.DialLabel.text()))
         currentSetLabel = QLabel(f'Current Set: {self.vt.setTemperature}')
         LightButtonLabel = QLabel('Fridge Light')
         LightButtonLabel.setAlignment(Qt.AlignmentFlag.AlignHCenter | Qt.AlignmentFlag.AlignBottom)
@@ -164,6 +180,7 @@ class Terra(QMainWindow):
         widget = QWidget()
         widget.setLayout(MainLayout)
         self.setCentralWidget(widget)
+        
 
     def value_changed(self, i):
         self.DialLabel.setText(str(i))
@@ -176,6 +193,10 @@ class Terra(QMainWindow):
         self.vt = vt
         update_GUI(self, self.vt)
 
+    def set_temp(self, dialset):
+        self.vt.setTemperature = dialset
+        update_GUI(self, self.vt)
+    
 
 def update_GUI(self, vt):
     self.vt = vt

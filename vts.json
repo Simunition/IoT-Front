@@ -1,0 +1,71 @@
+{
+    "vt1":{
+        "IDNum":1,
+        "Name":"Thermostat-Pfizer-Maryland",
+        "address":"Maryland",
+        "temperature":70,
+        "setTemperature":70,
+        "humidity":65,
+        "light":0,
+        "lot":72435,
+        "expiration":"1/21/25",
+        "remaining":773,
+        "lastUpdate":"never"
+    },
+
+    "vt2":{
+        "IDNum":2,
+        "Name":"Thermostat-Pfizer-Israel",
+        "address":"Israel",
+        "temperature":70,
+        "setTemperature":70,
+        "humidity":65,
+        "light":0,
+        "lot":132432,
+        "expiration":"2/21/25",
+        "remaining":800,
+        "lastUpdate":"never"
+    },
+
+    "vt3":{
+        "IDNum":3,
+        "Name":"Thermostat-Moderna-Maryland",
+        "address":"Maryland",
+        "temperature":70,
+        "setTemperature":70,
+        "humidity":65,
+        "light":0,
+        "lot":345753,
+        "expiration":"3/21/25",
+        "remaining":900,
+        "lastUpdate":"never"
+    },
+
+    "vt4":{
+        "IDNum":4,
+        "Name":"Thermostat-Moderna-Israel",
+        "address":"Israel",
+        "temperature":70,
+        "setTemperature":70,
+        "humidity":65,
+        "light":0,
+        "lot":685865,
+        "expiration":"4/21/25",
+        "remaining":1000,
+        "lastUpdate":"never"
+    },
+
+    "vt5":{
+        "IDNum":5,
+        "Name":"Thermostat-JJ-Maryland",
+        "address":"Maryland",
+        "temperature":70,
+        "setTemperature":70,
+        "humidity":65,
+        "light":0,
+        "lot":12870,
+        "expiration":"5/21/25",
+        "remaining":1100,
+        "lastUpdate":"never"
+    }
+}

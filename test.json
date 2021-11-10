@@ -1,0 +1,72 @@
+[
+    {
+        "CleanName": "Pfizer",
+        "IDNum": 1,
+        "Name": "Thermostat-Pfizer-Maryland",
+        "address": "Maryland",
+        "expiration": "1/21/25",
+        "humidity": 65,
+        "lastUpdate": "Never",
+        "light": 0,
+        "lot": 72435,
+        "remaining": 773,
+        "setTemperature": 70,
+        "temperature": 70
+    },
+    {
+        "CleanName": "Pfizer",
+        "IDNum": 2,
+        "Name": "Thermostat-Pfizer-Israel",
+        "address": "Israel",
+        "expiration": "2/21/25",
+        "humidity": 65,
+        "lastUpdate": "Never",
+        "light": 0,
+        "lot": 132432,
+        "remaining": 800,
+        "setTemperature": 70,
+        "temperature": 70
+    },
+    {
+        "CleanName": "Moderna",
+        "IDNum": 3,
+        "Name": "Thermostat-Moderna-Maryland",
+        "address": "Maryland",
+        "expiration": "3/21/25",
+        "humidity": 65,
+        "lastUpdate": "Never",
+        "light": 0,
+        "lot": 345753,
+        "remaining": 900,
+        "setTemperature": 70,
+        "temperature": 70
+    },
+    {
+        "CleanName": "Moderna",
+        "IDNum": 4,
+        "Name": "Thermostat-Moderna-Israel",
+        "address": "Israel",
+        "expiration": "4/21/25",
+        "humidity": 65,
+        "lastUpdate": "Never",
+        "light": 0,
+        "lot": 685865,
+        "remaining": 1000,
+        "setTemperature": 70,
+        "temperature": 70
+    },
+    {
+        "CleanName": "JJ",
+        "IDNum": 5,
+        "Name": "Thermostat-JJ-Maryland",
+        "address": "Maryland",
+        "expiration": "5/21/25",
+        "humidity": 65,
+        "lastUpdate": "Never",
+        "light": 0,
+        "lot": 12870,
+        "remaining": 1100,
+        "setTemperature": 70,
+        "temperature": 70
+    }
+]
